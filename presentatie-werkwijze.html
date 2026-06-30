@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Werkwijze — NAVARA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   NAVARA DESIGN TOKENS
+   ============================================ */
+:root {
+  --color-blue: #3665ff;
+  --color-blue-400: #5e84ff;
+  --color-blue-300: #86a3ff;
+  --color-blue-200: #afc1ff;
+  --color-blue-100: #d7e0ff;
+  --color-blue-50: #ebf0ff;
+  --color-blue-25: #f6f8ff;
+  --color-navy: #000b3b;
+  --color-navy-400: #333c62;
+  --color-navy-300: #666d89;
+  --color-navy-200: #999db1;
+  --color-navy-100: #ccced8;
+  --color-navy-50: #e6e7eb;
+  --color-black: #0b1433;
+  --color-white: #ffffff;
+
+  --font-sans: 'Inter', sans-serif;
+
+  --text-h1: clamp(2.5rem, 5vw, 5rem);
+  --text-h2: clamp(1.75rem, 3.5vw, 3rem);
+  --text-h3: clamp(1.35rem, 2.5vw, 2rem);
+  --text-h4: clamp(1.1rem, 1.8vw, 1.35rem);
+  --text-body: clamp(1rem, 1.5vw, 1.25rem);
+  --text-small: clamp(0.85rem, 1.2vw, 1rem);
+  --text-quote: clamp(1.5rem, 3vw, 2.5rem);
+  --text-cover: clamp(3rem, 6vw, 6rem);
+
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2.5rem;
+  --spacing-xl: 4rem;
+  --spacing-2xl: 6rem;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 100px;
+
+  --transition: 0.35s ease;
+}
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 16px;
+  color: var(--color-black);
+  background: var(--color-navy);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body { overflow-x: hidden; }
+
+/* ============================================
+   SLIDE BASE
+   ============================================ */
+.slide {
+  min-height: 100dvh;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-xl) var(--spacing-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-inner {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   SLIDE VARIANTS
+   ============================================ */
+.slide--dark     { background: var(--color-navy); color: var(--color-white); }
+.slide--blue     { background: var(--color-blue); color: var(--color-white); }
+.slide--light    { background: var(--color-white); color: var(--color-black); }
+.slide--light-blue { background: var(--color-blue-50); color: var(--color-black); }
+
+/* ============================================
+   NAVARA LOGO (top-left)
+   ============================================ */
+.slide__logo {
+  position: absolute;
+  top: var(--spacing-lg);
+  left: var(--spacing-lg);
+  font-weight: 900;
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+  opacity: 0.85;
+  z-index: 2;
+}
+.slide--dark .slide__logo,
+.slide--blue .slide__logo { opacity: 0.9; }
+
+/* ============================================
+   PAGE NUMBER (bottom-right)
+   ============================================ */
+.slide__page {
+  position: absolute;
+  bottom: var(--spacing-lg);
+  right: var(--spacing-lg);
+  font-size: var(--text-small);
+  font-weight: 400;
+  opacity: 0.5;
+  z-index: 2;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1, .h1 {
+  font-weight: 700;
+  font-size: var(--text-h1);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+h2, .h2 {
+  font-weight: 600;
+  font-size: var(--text-h2);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+h3, .h3 {
+  font-weight: 600;
+  font-size: var(--text-h3);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+h4, .h4 {
+  font-weight: 600;
+  font-size: var(--text-h4);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+p, .body {
+  font-weight: 300;
+  font-size: var(--text-body);
+  letter-spacing: -0.015em;
+  line-height: 1.55;
+  margin-bottom: var(--spacing-sm);
+}
+.text-small {
+  font-size: var(--text-small);
+  font-weight: 300;
+  line-height: 1.5;
+}
+.text-bold {
+  font-weight: 600;
+  font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+  line-height: 1.3;
+}
+.text-quote {
+  font-weight: 400;
+  font-size: var(--text-quote);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+/* ============================================
+   SLIDE 1: COVER (Dark)
+   ============================================ */
+.cover__tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--color-white);
+  padding: 0.35em 1em;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-small);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--spacing-lg);
+}
+.cover__title {
+  font-weight: 900;
+  font-size: var(--text-cover);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-bottom: var(--spacing-md);
+}
+.cover__subtitle {
+  font-weight: 300;
+  font-size: var(--text-h3);
+  opacity: 0.75;
+  letter-spacing: -0.01em;
+  max-width: 600px;
+}
+.cover__accent {
+  display: inline-block;
+  width: 60px;
+  height: 4px;
+  background: var(--color-blue);
+  border-radius: 2px;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* ============================================
+   SLIDE 2: TEAM GRID
+   ============================================ */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+.team-card {
+  background: var(--color-blue-25);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg) var(--spacing-md);
+  text-align: center;
+  border: 1px solid var(--color-blue-100);
+}
+.team-card__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--color-blue-100);
+  margin: 0 auto var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-blue);
+}
+.team-card__name {
+  font-weight: 600;
+  font-size: var(--text-body);
+  margin-bottom: 4px;
+}
+.team-card__role {
+  font-weight: 300;
+  font-size: var(--text-small);
+  color: var(--color-navy-300);
+}
+
+/* ============================================
+   SLIDE 3: QUOTE BLUE
+   ============================================ */
+.quote-slide {
+  text-align: center;
+  max-width: 800px;
+}
+.quote-slide__mark {
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 0.5;
+  opacity: 0.25;
+  margin-bottom: var(--spacing-md);
+}
+.quote-slide__text {
+  font-weight: 500;
+  font-size: var(--text-quote);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* ============================================
+   SLIDE 4: TWO-COLUMN
+   ============================================ */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-lg);
+}
+.two-col__box {
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+}
+.two-col__box--green {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+}
+.two-col__box--red {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+.two-col__box h4 {
+  margin-bottom: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.two-col__box ul {
+  list-style: none;
+  padding: 0;
+}
+.two-col__box li {
+  padding: 0.4em 0;
+  font-size: var(--text-body);
+  font-weight: 300;
+}
+.two-col__box li::before {
+  content: '✓ ';
+  font-weight: 700;
+}
+.two-col__box--green li::before { color: #10b981; }
+.two-col__box--red   li::before { content: '✗ '; color: #ef4444; }
+
+/* ============================================
+   BULLET LIST
+   ============================================ */
+.bullet-list {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--spacing-md);
+}
+.bullet-list li {
+  font-size: var(--text-body);
+  font-weight: 300;
+  padding: 0.55em 0;
+  padding-left: 1.8em;
+  position: relative;
+  line-height: 1.45;
+}
+.bullet-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.85em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-blue);
+}
+.slide--dark .bullet-list li::before,
+.slide--blue .bullet-list li::before { background: var(--color-white); }
+
+/* ============================================
+   NUMBERED LIST
+   ============================================ */
+.numbered-list {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--spacing-md);
+  counter-reset: step;
+}
+.numbered-list li {
+  counter-increment: step;
+  font-size: var(--text-body);
+  font-weight: 300;
+  padding: 0.6em 0 0.6em 3em;
+  position: relative;
+  line-height: 1.45;
+}
+.numbered-list li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  background: var(--color-blue-100);
+  color: var(--color-blue);
+  font-weight: 700;
+  font-size: 0.85em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================
+   CALLOUT BOX
+   ============================================ */
+.callout {
+  background: var(--color-blue-25);
+  border-left: 4px solid var(--color-blue);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-top: var(--spacing-md);
+}
+.callout p { margin-bottom: 0; }
+
+/* ============================================
+   BEFORE/AFTER
+   ============================================ */
+.before-after {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--spacing-md);
+  align-items: center;
+  margin-top: var(--spacing-lg);
+}
+.before-after__arrow {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-blue);
+}
+.before-after__box {
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+.before-after__box--before {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+.before-after__box--after {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+}
+.before-after__label {
+  font-weight: 700;
+  font-size: var(--text-small);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-xs);
+}
+.before-after__box--before .before-after__label { color: #ef4444; }
+.before-after__box--after  .before-after__label { color: #10b981; }
+
+/* ============================================
+   SLIDE 11: QA FLOW DIAGRAM
+   ============================================ */
+.qa-flow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  margin-top: var(--spacing-xl);
+  flex-wrap: wrap;
+}
+.qa-step {
+  flex: 1;
+  min-width: 140px;
+  max-width: 220px;
+  text-align: center;
+  padding: var(--spacing-md);
+  position: relative;
+}
+.qa-step__icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+.qa-step:nth-child(1) .qa-step__icon { background: var(--color-blue-100); }
+.qa-step:nth-child(2) .qa-step__icon { background: var(--color-blue-200); }
+.qa-step:nth-child(3) .qa-step__icon { background: var(--color-blue-300); color: var(--color-white); }
+.qa-step:nth-child(4) .qa-step__icon { background: var(--color-blue); color: var(--color-white); }
+
+.qa-step__role {
+  font-weight: 700;
+  font-size: var(--text-body);
+  margin-bottom: 4px;
+}
+.qa-step__desc {
+  font-weight: 300;
+  font-size: var(--text-small);
+  color: var(--color-navy-300);
+  line-height: 1.4;
+}
+.qa-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--color-blue-300);
+  padding-top: 25px;
+  flex-shrink: 0;
+}
+.qa-eyes {
+  margin-top: var(--spacing-xl);
+  text-align: center;
+}
+.qa-eyes__badge {
+  display: inline-block;
+  background: var(--color-navy);
+  color: var(--color-white);
+  padding: 0.5em 1.5em;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: var(--text-body);
+  margin-bottom: var(--spacing-md);
+}
+.qa-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+.qa-toolbar__item {
+  background: var(--color-blue-25);
+  border: 1px solid var(--color-blue-100);
+  padding: 0.5em 1.2em;
+  border-radius: var(--radius-pill);
+  font-weight: 500;
+  font-size: var(--text-small);
+  color: var(--color-navy);
+}
+
+/* ============================================
+   SLIDE 13: LESSON CARDS
+   ============================================ */
+.lesson-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+.lesson-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-blue-100);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  position: relative;
+  overflow: hidden;
+}
+.lesson-card__number {
+  font-weight: 900;
+  font-size: 3.5rem;
+  color: var(--color-blue-50);
+  position: absolute;
+  top: -10px;
+  right: var(--spacing-md);
+  line-height: 1;
+  pointer-events: none;
+}
+.lesson-card h4 {
+  margin-bottom: var(--spacing-sm);
+  padding-right: 3rem;
+}
+.lesson-card p {
+  font-size: var(--text-small);
+  color: var(--color-navy-300);
+  margin-bottom: 0;
+}
+
+/* ============================================
+   SLIDE 14: CLOSING
+   ============================================ */
+.closing__prompt {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+  text-align: center;
+}
+.closing__prompt p {
+  font-size: var(--text-h3);
+  font-weight: 400;
+  margin-bottom: 0;
+  font-style: italic;
+}
+.closing__info {
+  margin-top: var(--spacing-xl);
+  text-align: center;
+  font-weight: 300;
+  opacity: 0.7;
+}
+
+/* ============================================
+   NAVIGATION DOTS
+   ============================================ */
+.nav-dots {
+  position: fixed;
+  right: var(--spacing-md);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 100;
+}
+.nav-dots__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-navy-200);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition);
+  padding: 0;
+  outline: none;
+}
+.nav-dots__dot:hover { background: var(--color-blue-300); }
+.nav-dots__dot--active { background: var(--color-blue); transform: scale(1.4); }
+
+/* ============================================
+   KEYBOARD HINT (fades out)
+   ============================================ */
+.keyboard-hint {
+  position: fixed;
+  bottom: var(--spacing-lg);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 0.5em 1.2em;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 400;
+  z-index: 99;
+  animation: fadeOut 4s ease forwards;
+  animation-delay: 3s;
+  pointer-events: none;
+}
+@keyframes fadeOut {
+  to { opacity: 0; }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .two-col { grid-template-columns: 1fr; }
+  .qa-flow { flex-direction: column; align-items: center; }
+  .qa-arrow { transform: rotate(90deg); padding-top: 0; }
+  .qa-step { max-width: 100%; }
+  .lesson-cards { grid-template-columns: 1fr; }
+  .before-after { grid-template-columns: 1fr; }
+  .before-after__arrow { transform: rotate(90deg); text-align: center; }
+  .nav-dots { right: 8px; gap: 8px; }
+  .nav-dots__dot { width: 8px; height: 8px; }
+  .slide { padding: var(--spacing-lg) var(--spacing-md); }
+}
+
+@media (max-width: 480px) {
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .team-card { padding: var(--spacing-sm); }
+  .qa-flow { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- Keyboard hint -->
+<div class="keyboard-hint" aria-hidden="true">← → pijltjestoetsen om te navigeren</div>
+
+<!-- Navigation dots -->
+<nav class="nav-dots" id="navDots" aria-label="Slide navigatie"></nav>
+
+<!-- ============================================
+     SLIDE 1: TITEL (Dark)
+     ============================================ -->
+<section class="slide slide--dark" id="slide-1">
+  <div class="slide__logo">NAVARA</div>
+  <div class="slide__page">1 / 14</div>
+  <div class="slide-inner" style="text-align:center;">
+    <div class="cover__tag">Data, Software &amp; AI</div>
+    <h1 class="cover__title">Werkwijze</h1>
+    <div class="cover__accent"></div>
+    <p class="cover__subtitle">Onze leerlessen over hoe wij software ontwikkelen — en waarom werken leuk moet zijn.</p>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 2: INTRODUCTIE (Light)
+     ============================================ -->
+<section class="slide slide--light" id="slide-2">
+  <div class="slide__logo">NAVARA</div>
+  <div class="slide__page">2 / 14</div>
+  <div class="slide-inner">
+    <h2>Wie zijn wij?</h2>
+    <p>NAVARA — team online. Een nieuw platform bouwen voor een klant, met een dedicated team van zes.</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-card__avatar">👤</div>
+        <div class="team-card__name">[Naam]</div>
+        <div class="team-card__role">Developer</div>
+      </div>
+      <div class="team-card">
+        <div class="team-card__avatar">👤</div>
+        <div class="team-card__name">[Naam]</div>
+        <div class="team-card__role">Developer</div>
+      </div>
+      <div class="team-card">
+        <div class="team-card__avatar">👤</div>
+        <div class="team-card__name">[Naam]</div>
+        <div class="team-card__role">Developer</div>
+      </div>
+      <div class="team-card">
+        <div class="team-card__avatar">👤</div>
+        <div class="team-card__name">[Naam]</div>
+        <div class="team-card__role">Tester / QA</div>
+      </div>
+      <div class="team-card">
+        <div class="team-card__avatar">👤</div>
+        <div class="team-card__name">[Naam]</div>
+        <div class="team-card__role">Product Owner</div>
+      </div>
+      <div class="team-card">
+        <div class="team-card__avatar">👤</div>
+        <div class="team-card__name">[Naam]</div>
+        <div class="team-card__role">Scrum Master</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 3: QUOTE (Blue)
+     ============================================ -->
+<section class="slide slide--blue" id="slide-3">
+  <div class="slide__logo">NAVARA</div>
+  <div class="slide__page">3 / 14</div>
+  <div class="slide-inner quote-slide">
+    <div class="quote-slide__mark">"</div>
+    <p class="quote-slide__text">Werken moet leuk zijn.</p>
+    <p style="font-weight:300; opacity:0.8; font-size:var(--text-body);">En dat begint bij hoe je je werk organiseert.</p>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 4: WAAROM? (Light)
+     ============================================ -->
+<section class="slide slide--light" id="slide-4">
+  <div class="slide__logo">NAVARA</div>
+  <div class="slide__page">4 / 14</div>
+  <div class="slide-inner">
+    <h2>Waarom?</h2>
+    <p>Developers voegen de meeste waarde toe met:</p>
+    <div class="two-col">
+      <div class="two-col__box two-col__box--green">
+        <h4>Waar het om gaat</h4>
+        <ul>
+          <li>Features opleveren</li>
+          <li>Goede keuzes maken</li>
+          <li>Samenwerken met klant en team</li>
+          <li>Kwaliteit verbeteren</li>
+        </ul>
+      </div>
+      <div class="two-col__box two-col__box--red">
+        <h4>Niet met</h4>
+        <ul>
+          <li>Handmatig bijhouden</li>
+          <li>Herhalend werk</li>
+          <li>Brandjes blussen</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 5: WAT IS DEVEX? (Light)
+     ============================================ -->
+<section class="slide slide--light" id="slide-5">
+  <div class="slide__logo">NAVARA</div>
+  <div class="slide__page">5 / 14</div>
+  <div class="slide-inner">
+    <h2>Dat testen wij via Developer Experience</h2>
+    <p style="font-weight:600; margin-bottom:var(--spacing-lg);">Wat is Developer Experience?</p>
+    <p>Developer Experience gaat over hoe ontwikkelteams hun werk <strong>ervaren</strong>. Het houdt rekening met álle facetten van het werk van een ontwikkelteam:</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--spacing-md) var(--spacing-xl); margin-top:var(--spacing-md);">
+      <ul class="bullet-list" style="margin-top:0;">
+        <li>Kwaliteit van requirements</li>
+        <li>Tools en technologische keuzes</li>
+        <li>Best practices en workflows</li>
+      </ul>
+      <ul class="bullet-list" style="margin-top:0;">
+        <li>Omgeving en organisatiecultuur</li>
+        <li>Mindset van de organisatie</li>
+      </ul>
+    </div>
+    <p class="text-small" style="margin-top:var(--spacing-md); color:var(--color-navy-300);">DevEx geldt voor íedereen: developers, Ops-engineers, testers, UX-designers, scrum masters en product owners.</p>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 6: DX DRIVERS (Light)
+     ============================================ -->
+<section class="slide slide--light" id="slide-6">
+  <div class="slide__logo">NAVARA</div>
+  <div class="slide__page">6 / 14</div>
+  <div class="slide-inner">
+    <h2>Hoe meten we DevEx?</h2>
+    <ol class="numbered-list">
+      <li>Lijst met <strong>DX drivers</strong> (top 25) — de factoren die ontwikkelplezier bepalen</li>
+      <li>Ieder kwartaal een moment om te <strong>"klagen"</strong> — in de vorm van een gestructureerde vragenlijst</li>
+      <li><strong>Triage + acties</strong> — pijnpunten prioriteren en oppakken</li>
+      <li><strong>Theory of Constraints</strong> — focus op de grootste bottleneck</li>
+      <li><strong>Verbeteren</strong> totdat iets niet meer het grootste pijnpunt is — dan schuift de focus op</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 7: PIJNPUNTEN (Dark)
+     ============================================ -->
+<section class="slide slide--dark" id="slide-7">
+  <div class="slide__logo">NAVARA</div>
+  <div class="slide__page">7 / 14</div>
+  <div class="slide-inner">
+    <h2>Belangrijkste pijnpunten uit DX</h2>
+    <p style="opacity:0.7; margin-bottom:var(--spacing-lg);">We hebben geleerd van:</p>
+    <ul class="bullet-list">
+      <li><strong>Foutgevoelig handwerk</strong> in Contentful — contenttypes handmatig beheren</li>
+      <li><strong>Contentverlies</strong> door automatisering zonder guardrails</li>
+      <li><strong>Onbetrouwbare pipelines</strong> en flaky tests die vertrouwen ondermijnen</li>
+    </ul>
+    <div class="callout" style="background:rgba(255,255,255,0.06); border-left-color:var(--color-blue); margin-top:var(--spacing-xl);">
+      <p style="font-weight:500;">Dat waren geen losse incidenten, maar signalen dat onze werkwijze beter moest.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 8: PIPELINES (Light Blue)
+     ============================================ -->
+<section class="slide slide--light-blue" id="slide-8">
+  <div class="slide__logo">NAVARA</div>
+  <div class="slide__page">8 / 14</div>
+  <div class="slide-inner">
+    <h2>🔍 Inzoomen: betrouwbare pipelines</h2>
+    <p class="text-bold" style="margin-top:var(--spacing-md);">Betrouwbare pipelines bepalen werkplezier.</p>
+    <p>Onbetrouwbare pipelines maken development frustrerend. Als pipelines niet betrouwbaar zijn, verlies je vertrouwen in je proces.</p>
+    <div class="callout" style="margin-top:var(--spacing-lg);">
+      <h4 style="margin-bottom:var(--spacing-xs);">Daarom investeren we in een betere teststrategie:</h4>
+      <ul class="bullet-list" style="margin-top:var(--spacing-xs);">
+        <li><strong>Time box</strong> voor proof-of-concept — niet eindeloos overleggen</li>
+        <li><strong>Gewoon doen</strong> in plaats van vergaderen</li>
+        <li><strong>Ruimte en vertrouwen</strong> geven aan het team</li>
+        <li>Dit is een voorbeeld van hoe we vaker verbeteringen doorvoeren</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 9: HANDWERK (Light)
+     ============================================ -->
+<section class="slide slide--light" id="slide-9">
+  <div class="slide__logo">NAVARA</div>
+  <div class="slide__page">9 / 14</div>
+  <div class="slide-inner">
+    <h2>🔍 Inzoomen: handwerk schaalt slecht</h2>
+    <p>Contentful handmatig beheren was foutgevoelig. Contenttypes handmatig aanmaken en bijhouden kost tijd en vergroot de kans op fouten.</p>
+    <div class="before-after">
+      <div class="before-after__box before-after__box--before">
+        <div class="before-after__label">Vóór</div>
+        <p style="font-weight:500;">Handmatig bijhouden</p>
+        <p class="text-small" style="color:var(--color-navy-300);">Foutgevoelig, tijdrovend, niet reproduceerbaar</p>
+      </div>
+      <div class="before-after__arrow">→</div>
+      <div class="before-after__box before-after__box--after">
+        <div class="before-after__label">Nu</div>
+        <p style="font-weight:500;">Contenttypes syncen met OpenTofu</p>
+        <p class="text-small" style="color:var(--color-navy-300);">Herhaalbaar, controleerbaar, één druk op de knop</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 10: AUTOMATISERING (Light)
+     ============================================ -->
+<section class="slide slide--light" id="slide-10">
+  <div class="slide__logo">NAVARA</div>
+  <div class="slide__page">10 / 14</div>
+  <div class="slide-inner">
+    <h2>🔍 Inzoomen: automatisering heeft guardrails nodig</h2>
+    <p class="text-bold">Automatiseren is niet automatisch veilig.</p>
+    <p>Door de OpenTofu-sync verdween er content. Daar hebben we van geleerd.</p>
+    <p style="font-weight:600; margin-top:var(--spacing-lg);">Nu kijken we scherper naar:</p>
+    <ul class="bullet-list">
+      <li><strong>Backups</strong> — altijd een vangnet</li>
+      <li><strong>Checks vooraf</strong> — wat gebeurt er als dit draait?</li>
+      <li><strong>Guardrails</strong> — begrenzing inbouwen vóór automatisering</li>
+      <li><strong>Impact van automatisering</strong> — niet alleen de happy path testen</li>
+    </ul>
+    <div class="callout" style="margin-top:var(--spacing-lg);">
+      <p style="font-weight:500;">Automatisering moet werk <strong>makkelijker</strong> maken, niet risico's onzichtbaar maken.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 11: QA FLOW (Light)
+     ============================================ -->
+<section class="slide slide--light" id="slide-11">
+  <div class="slide__logo">NAVARA</div>
+  <div class="slide__page">11 / 14</div>
+  <div class="slide-inner" style="text-align:center;">
+    <h2>QA-strategie: flow van code tot productie</h2>
+    <div class="qa-eyes" style="margin-top:var(--spacing-md);">
+      <div class="qa-eyes__badge">👤👤👤 + 👤👤👤 + 🤖🤖 &nbsp;=&nbsp; 6 ogen + 2 AI-ogen</div>
+      <p class="text-small" style="color:var(--color-navy-300);">Onze kwaliteit komt niet uit één reviewmoment</p>
+    </div>
+
+    <div class="qa-flow">
+      <div class="qa-step">
+        <div class="qa-step__icon">👤</div>
+        <div class="qa-step__role">Developer</div>
+        <div class="qa-step__desc">Schrijft code en gebruikt AI als&nbsp;sparringpartner</div>
+      </div>
+      <div class="qa-arrow">→</div>
+      <div class="qa-step">
+        <div class="qa-step__icon">🤖</div>
+        <div class="qa-step__role">AI</div>
+        <div class="qa-step__desc">Helpt met review, checks en&nbsp;alternatieven</div>
+      </div>
+      <div class="qa-arrow">→</div>
+      <div class="qa-step">
+        <div class="qa-step__icon">👤</div>
+        <div class="qa-step__role">Collega</div>
+        <div class="qa-step__desc">Reviewt de code — menselijke blik&nbsp;blijft&nbsp;essentieel</div>
+      </div>
+      <div class="qa-arrow">→</div>
+      <div class="qa-step">
+        <div class="qa-step__icon">👤</div>
+        <div class="qa-step__role">Tester</div>
+        <div class="qa-step__desc">Test op de testomgeving — acceptatie&nbsp;vanuit&nbsp;gebruiker</div>
+      </div>
+    </div>
+
+    <p class="text-small" style="margin-top:var(--spacing-lg); color:var(--color-navy-300); font-weight:500;">AI versnelt, maar mensen blijven verantwoordelijk.</p>
+
+    <div style="margin-top:var(--spacing-lg);">
+      <p style="font-weight:600; margin-bottom:var(--spacing-sm);">Ondersteund door doorlopende kwaliteitslagen:</p>
+      <div class="qa-toolbar">
+        <span class="qa-toolbar__item">Unit tests</span>
+        <span class="qa-toolbar__item">Storybook</span>
+        <span class="qa-toolbar__item">Integratie testen</span>
+        <span class="qa-toolbar__item">End-to-end testen</span>
+        <span class="qa-toolbar__item">Accessibility checks</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 12: CULTUUR (Blue)
+     ============================================ -->
+<section class="slide slide--blue" id="slide-12">
+  <div class="slide__logo">NAVARA</div>
+  <div class="slide__page">12 / 14</div>
+  <div class="slide-inner">
+    <h2>Cultuur: de menselijke kant</h2>
+    <p style="opacity:0.85; font-weight:500; font-size:var(--text-h4); margin-bottom:var(--spacing-lg);">Automatisering werkt alleen met vertrouwen.</p>
+    <p style="opacity:0.9;">Werk leuker maken is niet alleen techniek. Het vraagt:</p>
+    <ul class="bullet-list" style="margin-top:var(--spacing-md);">
+      <li><strong>Ruimte</strong> om te verbeteren — zonder dat alles direct af moet</li>
+      <li><strong>Vertrouwen</strong> in het team — geef professionals de vrijheid</li>
+      <li><strong>Steun</strong> vanuit de klant — zij profiteren van een gezond team</li>
+      <li><strong>Medestanders</strong> die mee willen denken — verbeteren doe je samen</li>
+      <li><strong>Cultuur</strong> waarin fouten leiden tot verbetering — niet tot afrekening</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 13: 4 LEERLESSEN (Light)
+     ============================================ -->
+<section class="slide slide--light" id="slide-13">
+  <div class="slide__logo">NAVARA</div>
+  <div class="slide__page">13 / 14</div>
+  <div class="slide-inner">
+    <h2>4 Leerlessen</h2>
+    <p style="font-weight:600; font-style:italic; margin-bottom:var(--spacing-lg);">"Wat kun jij morgen meenemen?"</p>
+    <div class="lesson-cards">
+      <div class="lesson-card">
+        <div class="lesson-card__number">1</div>
+        <h4>Automatiseer quality assurance</h4>
+        <p>Mensen maken fouten — ga daar vanuit. Automatiseer QA zo veel mogelijk. Vooral met AI. Catch issues voordat ze productie halen.</p>
+      </div>
+      <div class="lesson-card">
+        <div class="lesson-card__number">2</div>
+        <h4>Automatiseer met guardrails</h4>
+        <p>Bij repetitief werk stellen we steeds dezelfde vraag: <em>moet een mens dit doen, of kunnen we dit automatiseren?</em> Maar denk vooraf na over de begrenzing.</p>
+      </div>
+      <div class="lesson-card">
+        <div class="lesson-card__number">3</div>
+        <h4>Meer ogen = meer kwaliteit</h4>
+        <p>Meerdere reviewers verhogen kwaliteit én verdelen kennis. Niemand mag een bottleneck zijn. Zorg dat meerdere mensen elk onderdeel kennen.</p>
+      </div>
+      <div class="lesson-card">
+        <div class="lesson-card__number">4</div>
+        <h4>Investeer in je proces</h4>
+        <p>Het voelt traag, maar het is de snelste weg. Contentful: handmatig was foutgevoelig en kostte continu tijd. Nu is het één druk op de knop.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 14: AFSLUITING (Dark)
+     ============================================ -->
+<section class="slide slide--dark" id="slide-14">
+  <div class="slide__logo">NAVARA</div>
+  <div class="slide__page">14 / 14</div>
+  <div class="slide-inner" style="text-align:center;">
+    <h2>Afsluiting &amp; discussie</h2>
+    <p style="opacity:0.7; margin-bottom:var(--spacing-lg);">Vragen, reacties, ervaringen?</p>
+    <div class="closing__prompt">
+      <p>"Welke van deze vier lessen raakt het meest aan iets wat jij herkent in jouw team?"</p>
+    </div>
+    <div class="closing__info">
+      <p style="font-weight:600; margin-bottom:4px;">NAVARA</p>
+      <p class="text-small">Ondersteuning bij Developer Experience en Copilot training</p>
+      <p class="text-small" style="opacity:0.6; margin-top:var(--spacing-md);">navara.nl &nbsp;·&nbsp; Engineering business performance</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     JAVASCRIPT: NAVIGATION
+     ============================================ -->
+<script>
+(function() {
+  const slides = document.querySelectorAll('.slide');
+  const totalSlides = slides.length;
+  const navDots = document.getElementById('navDots');
+
+  // Build navigation dots
+  for (let i = 1; i <= totalSlides; i++) {
+    const dot = document.createElement('button');
+    dot.className = 'nav-dots__dot';
+    dot.setAttribute('aria-label', 'Ga naar slide ' + i);
+    dot.addEventListener('click', () => {
+      document.getElementById('slide-' + i).scrollIntoView({ behavior: 'smooth' });
+    });
+    navDots.appendChild(dot);
+  }
+
+  const dots = navDots.querySelectorAll('.nav-dots__dot');
+
+  // Update active dot based on which slide is most visible
+  function updateActiveDot() {
+    let activeIndex = 0;
+    let minTop = Infinity;
+
+    slides.forEach((slide, i) => {
+      const rect = slide.getBoundingClientRect();
+      const absTop = Math.abs(rect.top);
+      if (absTop < minTop) {
+        minTop = absTop;
+        activeIndex = i;
+      }
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('nav-dots__dot--active', i === activeIndex);
+    });
+  }
+
+  // Keyboard navigation
+  function navigate(delta) {
+    const current = getCurrentSlideIndex();
+    const target = Math.max(0, Math.min(totalSlides - 1, current + delta));
+    slides[target].scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function getCurrentSlideIndex() {
+    let best = 0;
+    let minTop = Infinity;
+    slides.forEach((s, i) => {
+      const absTop = Math.abs(s.getBoundingClientRect().top);
+      if (absTop < minTop) { minTop = absTop; best = i; }
+    });
+    return best;
+  }
+
+  document.addEventListener('keydown', function(e) {
+    // Don't capture if user is in an input field
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
+
+    switch (e.key) {
+      case 'ArrowDown':
+      case 'ArrowRight':
+      case 'PageDown':
+        e.preventDefault();
+        navigate(1);
+        break;
+      case 'ArrowUp':
+      case 'ArrowLeft':
+      case 'PageUp':
+        e.preventDefault();
+        navigate(-1);
+        break;
+      case 'Home':
+        e.preventDefault();
+        slides[0].scrollIntoView({ behavior: 'smooth' });
+        break;
+      case 'End':
+        e.preventDefault();
+        slides[totalSlides - 1].scrollIntoView({ behavior: 'smooth' });
+        break;
+    }
+  });
+
+  // Update dots on scroll (debounced)
+  let scrollTimeout;
+  document.addEventListener('scroll', function() {
+    if (scrollTimeout) cancelAnimationFrame(scrollTimeout);
+    scrollTimeout = requestAnimationFrame(updateActiveDot);
+  }, { passive: true });
+
+  // Initial state
+  updateActiveDot();
+})();
+</script>
+
+</body>
+</html>
