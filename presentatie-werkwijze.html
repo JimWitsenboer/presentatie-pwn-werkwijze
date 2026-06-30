@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Werkwijze — NAVARA</title>
+<title>Werkwijze · NAVARA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
@@ -30,21 +30,21 @@
 
   --font-sans: 'Inter', sans-serif;
 
-  --text-h1: clamp(2.5rem, 5vw, 5rem);
-  --text-h2: clamp(1.75rem, 3.5vw, 3rem);
-  --text-h3: clamp(1.35rem, 2.5vw, 2rem);
-  --text-h4: clamp(1.1rem, 1.8vw, 1.35rem);
-  --text-body: clamp(1rem, 1.5vw, 1.25rem);
-  --text-small: clamp(0.85rem, 1.2vw, 1rem);
-  --text-quote: clamp(1.5rem, 3vw, 2.5rem);
-  --text-cover: clamp(3rem, 6vw, 6rem);
+  --text-h1: clamp(3.2rem, 6vw, 6.5rem);
+  --text-h2: clamp(2.2rem, 4vw, 3.8rem);
+  --text-h3: clamp(1.6rem, 3vw, 2.4rem);
+  --text-h4: clamp(1.3rem, 2.2vw, 1.6rem);
+  --text-body: clamp(1.15rem, 1.7vw, 1.4rem);
+  --text-small: clamp(0.95rem, 1.2vw, 1.1rem);
+  --text-quote: clamp(2rem, 4vw, 3.2rem);
+  --text-cover: clamp(4rem, 7.5vw, 7.5rem);
 
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 1.5rem;
-  --spacing-lg: 2.5rem;
-  --spacing-xl: 4rem;
-  --spacing-2xl: 6rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 5rem;
 
   --radius-sm: 6px;
   --radius-md: 8px;
@@ -77,21 +77,22 @@ body { overflow-x: hidden; }
    SLIDE BASE
    ============================================ */
 .slide {
-  min-height: 100dvh;
+  height: 100dvh;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: var(--spacing-xl) var(--spacing-lg);
+  padding: clamp(1.5rem, 4vh, 3rem) clamp(2rem, 5vw, 5rem);
   position: relative;
   overflow: hidden;
 }
 
 .slide-inner {
   width: 100%;
-  max-width: 1100px;
+  max-width: 94vw;
   margin: 0 auto;
+  max-height: 100%;
 }
 
 /* ============================================
@@ -172,7 +173,7 @@ p, .body {
 }
 .text-bold {
   font-weight: 600;
-  font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
   line-height: 1.3;
 }
 .text-quote {
@@ -209,7 +210,8 @@ p, .body {
   font-size: var(--text-h3);
   opacity: 0.75;
   letter-spacing: -0.01em;
-  max-width: 600px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 .cover__accent {
   display: inline-block;
@@ -224,28 +226,33 @@ p, .body {
    SLIDE 2: TEAM GRID
    ============================================ */
 .team-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--spacing-lg);
-  margin-top: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .team-card {
   background: var(--color-blue-25);
   border-radius: var(--radius-lg);
-  padding: var(--spacing-lg) var(--spacing-md);
+  padding: var(--spacing-lg) var(--spacing-xl);
   text-align: center;
   border: 1px solid var(--color-blue-100);
+  flex: 0 0 400px;
 }
 .team-card__avatar {
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background: var(--color-blue-100);
-  margin: 0 auto var(--spacing-sm);
+  margin: 0 auto var(--spacing-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 600;
   color: var(--color-blue);
 }
@@ -265,7 +272,7 @@ p, .body {
    ============================================ */
 .quote-slide {
   text-align: center;
-  max-width: 800px;
+  max-width: 1000px;
 }
 .quote-slide__mark {
   font-size: 5rem;
@@ -289,10 +296,10 @@ p, .body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-xl);
-  margin-top: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
 }
 .two-col__box {
-  padding: var(--spacing-lg);
+  padding: var(--spacing-xl);
   border-radius: var(--radius-lg);
 }
 .two-col__box--green {
@@ -336,16 +343,16 @@ p, .body {
 .bullet-list li {
   font-size: var(--text-body);
   font-weight: 300;
-  padding: 0.55em 0;
-  padding-left: 1.8em;
+  padding: 0.7em 0 0.7em 1.8em;
   position: relative;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 .bullet-list li::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 0.85em;
+  top: 50%;
+  transform: translateY(-50%);
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -367,22 +374,23 @@ p, .body {
   counter-increment: step;
   font-size: var(--text-body);
   font-weight: 300;
-  padding: 0.6em 0 0.6em 3em;
+  padding: 0.85em 0 0.85em 3.2em;
   position: relative;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 .numbered-list li::before {
   content: counter(step);
   position: absolute;
   left: 0;
-  top: 0.45em;
-  width: 2em;
-  height: 2em;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.2em;
+  height: 2.2em;
   border-radius: 50%;
   background: var(--color-blue-100);
   color: var(--color-blue);
   font-weight: 700;
-  font-size: 0.85em;
+  font-size: 0.9em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -394,9 +402,9 @@ p, .body {
 .callout {
   background: var(--color-blue-25);
   border-left: 4px solid var(--color-blue);
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-lg) var(--spacing-xl);
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
-  margin-top: var(--spacing-md);
+  margin-top: var(--spacing-lg);
 }
 .callout p { margin-bottom: 0; }
 
@@ -416,7 +424,7 @@ p, .body {
   color: var(--color-blue);
 }
 .before-after__box {
-  padding: var(--spacing-lg);
+  padding: var(--spacing-xl);
   border-radius: var(--radius-lg);
   text-align: center;
 }
@@ -451,21 +459,21 @@ p, .body {
 }
 .qa-step {
   flex: 1;
-  min-width: 140px;
-  max-width: 220px;
+  min-width: 160px;
+  max-width: 280px;
   text-align: center;
   padding: var(--spacing-md);
   position: relative;
 }
 .qa-step__icon {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   margin: 0 auto var(--spacing-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   font-weight: 700;
 }
 .qa-step:nth-child(1) .qa-step__icon { background: var(--color-blue-100); }
@@ -530,33 +538,33 @@ p, .body {
 .lesson-cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--spacing-lg);
-  margin-top: var(--spacing-lg);
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-xl);
 }
 .lesson-card {
   background: var(--color-white);
   border: 1px solid var(--color-blue-100);
   border-radius: var(--radius-lg);
-  padding: var(--spacing-lg);
+  padding: var(--spacing-xl);
   position: relative;
-  overflow: hidden;
 }
 .lesson-card__number {
   font-weight: 900;
-  font-size: 3.5rem;
-  color: var(--color-blue-50);
+  font-size: 5rem;
+  color: var(--color-blue-100);
   position: absolute;
-  top: -10px;
-  right: var(--spacing-md);
+  top: var(--spacing-sm);
+  right: var(--spacing-lg);
   line-height: 1;
   pointer-events: none;
 }
 .lesson-card h4 {
-  margin-bottom: var(--spacing-sm);
-  padding-right: 3rem;
+  margin-bottom: var(--spacing-md);
+  padding-right: 4rem;
+  font-size: var(--text-h4);
 }
 .lesson-card p {
-  font-size: var(--text-small);
+  font-size: var(--text-body);
   color: var(--color-navy-300);
   margin-bottom: 0;
 }
@@ -568,9 +576,12 @@ p, .body {
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.15);
   border-radius: var(--radius-lg);
-  padding: var(--spacing-lg);
-  margin-top: var(--spacing-lg);
+  padding: var(--spacing-xl) var(--spacing-2xl);
+  margin-top: var(--spacing-xl);
   text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .closing__prompt p {
   font-size: var(--text-h3);
@@ -638,8 +649,9 @@ p, .body {
 /* ============================================
    RESPONSIVE
    ============================================ */
-@media (max-width: 768px) {
-  .team-grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 900px) {
+  .team-card { flex: 0 0 260px; }
+  .team-grid { max-width: 580px; }
   .two-col { grid-template-columns: 1fr; }
   .qa-flow { flex-direction: column; align-items: center; }
   .qa-arrow { transform: rotate(90deg); padding-top: 0; }
@@ -652,9 +664,8 @@ p, .body {
   .slide { padding: var(--spacing-lg) var(--spacing-md); }
 }
 
-@media (max-width: 480px) {
-  .team-grid { grid-template-columns: 1fr 1fr; }
-  .team-card { padding: var(--spacing-sm); }
+@media (max-width: 600px) {
+  .team-card { padding: var(--spacing-sm); flex: 0 0 100%; }
   .qa-flow { flex-direction: column; align-items: center; }
 }
 </style>
@@ -672,12 +683,11 @@ p, .body {
      ============================================ -->
 <section class="slide slide--dark" id="slide-1">
   <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">1 / 14</div>
+  <div class="slide__page">1 / 15</div>
   <div class="slide-inner" style="text-align:center;">
-    <div class="cover__tag">Data, Software &amp; AI</div>
     <h1 class="cover__title">Werkwijze</h1>
     <div class="cover__accent"></div>
-    <p class="cover__subtitle">Onze leerlessen over hoe wij software ontwikkelen — en waarom werken leuk moet zijn.</p>
+    <p class="cover__subtitle">Onze leerlessen over hoe wij software ontwikkelen, en waarom werken leuk moet zijn.</p>
   </div>
 </section>
 
@@ -686,38 +696,40 @@ p, .body {
      ============================================ -->
 <section class="slide slide--light" id="slide-2">
   <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">2 / 14</div>
+  <div class="slide__page">2 / 15</div>
   <div class="slide-inner">
     <h2>Wie zijn wij?</h2>
-    <p>NAVARA — team online. Een nieuw platform bouwen voor een klant, met een dedicated team van zes.</p>
+    <p>NAVARA, team online. Nieuw design van de website voor PWN.</p>
     <div class="team-grid">
       <div class="team-card">
-        <div class="team-card__avatar">👤</div>
         <div class="team-card__name">[Naam]</div>
         <div class="team-card__role">Developer</div>
       </div>
       <div class="team-card">
-        <div class="team-card__avatar">👤</div>
         <div class="team-card__name">[Naam]</div>
         <div class="team-card__role">Developer</div>
       </div>
       <div class="team-card">
-        <div class="team-card__avatar">👤</div>
         <div class="team-card__name">[Naam]</div>
         <div class="team-card__role">Developer</div>
       </div>
       <div class="team-card">
-        <div class="team-card__avatar">👤</div>
+        <div class="team-card__name">[Naam]</div>
+        <div class="team-card__role">Developer</div>
+      </div>
+      <div class="team-card">
+        <div class="team-card__name">[Naam]</div>
+        <div class="team-card__role">Developer</div>
+      </div>
+      <div class="team-card">
         <div class="team-card__name">[Naam]</div>
         <div class="team-card__role">Tester / QA</div>
       </div>
       <div class="team-card">
-        <div class="team-card__avatar">👤</div>
         <div class="team-card__name">[Naam]</div>
         <div class="team-card__role">Product Owner</div>
       </div>
       <div class="team-card">
-        <div class="team-card__avatar">👤</div>
         <div class="team-card__name">[Naam]</div>
         <div class="team-card__role">Scrum Master</div>
       </div>
@@ -730,11 +742,11 @@ p, .body {
      ============================================ -->
 <section class="slide slide--blue" id="slide-3">
   <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">3 / 14</div>
+  <div class="slide__page">3 / 15</div>
   <div class="slide-inner quote-slide">
     <div class="quote-slide__mark">"</div>
     <p class="quote-slide__text">Werken moet leuk zijn.</p>
-    <p style="font-weight:300; opacity:0.8; font-size:var(--text-body);">En dat begint bij hoe je je werk organiseert.</p>
+    <p style="font-weight:300; opacity:0.8; font-size:var(--text-h3);">En dat begint bij hoe je je werk organiseert.</p>
   </div>
 </section>
 
@@ -743,10 +755,10 @@ p, .body {
      ============================================ -->
 <section class="slide slide--light" id="slide-4">
   <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">4 / 14</div>
+  <div class="slide__page">4 / 15</div>
   <div class="slide-inner">
     <h2>Waarom?</h2>
-    <p>Developers voegen de meeste waarde toe met:</p>
+    <p class="text-bold">Developers voegen de meeste waarde toe met:</p>
     <div class="two-col">
       <div class="two-col__box two-col__box--green">
         <h4>Waar het om gaat</h4>
@@ -761,7 +773,7 @@ p, .body {
         <h4>Niet met</h4>
         <ul>
           <li>Handmatig bijhouden</li>
-          <li>Herhalend werk</li>
+          <li>Repeterend werk</li>
           <li>Brandjes blussen</li>
         </ul>
       </div>
@@ -774,23 +786,12 @@ p, .body {
      ============================================ -->
 <section class="slide slide--light" id="slide-5">
   <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">5 / 14</div>
+  <div class="slide__page">5 / 15</div>
   <div class="slide-inner">
-    <h2>Dat testen wij via Developer Experience</h2>
-    <p style="font-weight:600; margin-bottom:var(--spacing-lg);">Wat is Developer Experience?</p>
-    <p>Developer Experience gaat over hoe ontwikkelteams hun werk <strong>ervaren</strong>. Het houdt rekening met álle facetten van het werk van een ontwikkelteam:</p>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--spacing-md) var(--spacing-xl); margin-top:var(--spacing-md);">
-      <ul class="bullet-list" style="margin-top:0;">
-        <li>Kwaliteit van requirements</li>
-        <li>Tools en technologische keuzes</li>
-        <li>Best practices en workflows</li>
-      </ul>
-      <ul class="bullet-list" style="margin-top:0;">
-        <li>Omgeving en organisatiecultuur</li>
-        <li>Mindset van de organisatie</li>
-      </ul>
+    <div style="display:grid; grid-template-columns:1fr 1.4fr; gap:var(--spacing-xl); align-items:center;">
+      <h2 style="margin-bottom:0;">Wat is Developer Experience?</h2>
+      <p style="font-size:clamp(1.2rem, 1.8vw, 1.5rem); line-height:1.6;">Developer experience gaat over <strong>hoe ontwikkelteams hun werk ervaren</strong>. Het houdt rekening met alle facetten van het werk, zoals de <strong>kwaliteit van requirements</strong>, <strong>tools en technologische keuzes</strong>, <strong>best practices en workflows</strong>, maar ook de <strong>omgeving</strong> waarin het team opereert, de <strong>cultuur</strong> en de <strong>mindset</strong> van de organisatie. DevEx is van toepassing op <strong>iedereen</strong> die betrokken is bij softwareontwikkeling: developers, Ops-engineers, testers, UX-designers, scrum masters en product owners.</p>
     </div>
-    <p class="text-small" style="margin-top:var(--spacing-md); color:var(--color-navy-300);">DevEx geldt voor íedereen: developers, Ops-engineers, testers, UX-designers, scrum masters en product owners.</p>
   </div>
 </section>
 
@@ -799,30 +800,48 @@ p, .body {
      ============================================ -->
 <section class="slide slide--light" id="slide-6">
   <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">6 / 14</div>
+  <div class="slide__page">6 / 15</div>
   <div class="slide-inner">
-    <h2>Hoe meten we DevEx?</h2>
-    <ol class="numbered-list">
-      <li>Lijst met <strong>DX drivers</strong> (top 25) — de factoren die ontwikkelplezier bepalen</li>
-      <li>Ieder kwartaal een moment om te <strong>"klagen"</strong> — in de vorm van een gestructureerde vragenlijst</li>
-      <li><strong>Triage + acties</strong> — pijnpunten prioriteren en oppakken</li>
-      <li><strong>Theory of Constraints</strong> — focus op de grootste bottleneck</li>
-      <li><strong>Verbeteren</strong> totdat iets niet meer het grootste pijnpunt is — dan schuift de focus op</li>
-    </ol>
+    <h2 style="margin-bottom:var(--spacing-md);">Hoe meten we DevEx?</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--spacing-xl); align-items:center; flex:1;">
+      <ol class="numbered-list" style="margin-top:0;">
+        <li>Ieder kwartaal een moment om te <strong>"klagen"</strong>, in de vorm van een gestructureerde vragenlijst</li>
+        <li><strong>Triage + acties</strong>, pijnpunten prioriteren en oppakken</li>
+        <li><strong>Theory of Constraints</strong>, focus op de grootste bottleneck</li>
+        <li><strong>Verbeteren</strong> totdat iets niet meer het grootste pijnpunt is, dan schuift de focus op</li>
+      </ol>
+      <div style="text-align:center;">
+        <img src="images/DX-drivers.png" alt="DX drivers top 25" style="max-width:100%; max-height:65vh; height:auto; border-radius:var(--radius-lg); box-shadow:0 4px 24px rgba(0,0,0,0.1); object-fit:contain;">
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ============================================
-     SLIDE 7: PIJNPUNTEN (Dark)
+     SLIDE 7: DX SNAPSHOT
      ============================================ -->
-<section class="slide slide--dark" id="slide-7">
+<section class="slide slide--light" id="slide-7">
   <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">7 / 14</div>
+  <div class="slide__page">7 / 15</div>
+  <div class="slide-inner" style="text-align:center;">
+    <h2>Developer Experience in beeld</h2>
+    <div style="margin-top:var(--spacing-lg);">
+      <img src="images/DX-snapshot.png" alt="DX snapshot" style="max-width:100%; max-height:70vh; height:auto; border-radius:var(--radius-lg); box-shadow:0 4px 32px rgba(0,0,0,0.12);">
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 8: PIJNPUNTEN
+     ============================================ -->
+<section class="slide slide--dark" id="slide-8">
+  <div class="slide__logo">NAVARA</div>
+  <div class="slide__page">8 / 15</div>
   <div class="slide-inner">
     <h2>Belangrijkste pijnpunten uit DX</h2>
     <p style="opacity:0.7; margin-bottom:var(--spacing-lg);">We hebben geleerd van:</p>
     <ul class="bullet-list">
-      <li><strong>Foutgevoelig handwerk</strong> in Contentful — contenttypes handmatig beheren</li>
+      <li><strong>Foutgevoelig handwerk</strong> in Contentful:contenttypes handmatig beheren</li>
       <li><strong>Contentverlies</strong> door automatisering zonder guardrails</li>
       <li><strong>Onbetrouwbare pipelines</strong> en flaky tests die vertrouwen ondermijnen</li>
     </ul>
@@ -835,9 +854,9 @@ p, .body {
 <!-- ============================================
      SLIDE 8: PIPELINES (Light Blue)
      ============================================ -->
-<section class="slide slide--light-blue" id="slide-8">
+<section class="slide slide--light-blue" id="slide-9">
   <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">8 / 14</div>
+  <div class="slide__page">9 / 15</div>
   <div class="slide-inner">
     <h2>🔍 Inzoomen: betrouwbare pipelines</h2>
     <p class="text-bold" style="margin-top:var(--spacing-md);">Betrouwbare pipelines bepalen werkplezier.</p>
@@ -845,8 +864,7 @@ p, .body {
     <div class="callout" style="margin-top:var(--spacing-lg);">
       <h4 style="margin-bottom:var(--spacing-xs);">Daarom investeren we in een betere teststrategie:</h4>
       <ul class="bullet-list" style="margin-top:var(--spacing-xs);">
-        <li><strong>Time box</strong> voor proof-of-concept — niet eindeloos overleggen</li>
-        <li><strong>Gewoon doen</strong> in plaats van vergaderen</li>
+        <li><strong>Time box</strong> voor proof-of-concept, niet eindeloos overleggen</li>
         <li><strong>Ruimte en vertrouwen</strong> geven aan het team</li>
         <li>Dit is een voorbeeld van hoe we vaker verbeteringen doorvoeren</li>
       </ul>
@@ -857,9 +875,9 @@ p, .body {
 <!-- ============================================
      SLIDE 9: HANDWERK (Light)
      ============================================ -->
-<section class="slide slide--light" id="slide-9">
+<section class="slide slide--light" id="slide-10">
   <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">9 / 14</div>
+  <div class="slide__page">10 / 15</div>
   <div class="slide-inner">
     <h2>🔍 Inzoomen: handwerk schaalt slecht</h2>
     <p>Contentful handmatig beheren was foutgevoelig. Contenttypes handmatig aanmaken en bijhouden kost tijd en vergroot de kans op fouten.</p>
@@ -882,22 +900,24 @@ p, .body {
 <!-- ============================================
      SLIDE 10: AUTOMATISERING (Light)
      ============================================ -->
-<section class="slide slide--light" id="slide-10">
+<section class="slide slide--light" id="slide-11">
   <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">10 / 14</div>
+  <div class="slide__page">11 / 15</div>
   <div class="slide-inner">
     <h2>🔍 Inzoomen: automatisering heeft guardrails nodig</h2>
-    <p class="text-bold">Automatiseren is niet automatisch veilig.</p>
-    <p>Door de OpenTofu-sync verdween er content. Daar hebben we van geleerd.</p>
-    <p style="font-weight:600; margin-top:var(--spacing-lg);">Nu kijken we scherper naar:</p>
-    <ul class="bullet-list">
-      <li><strong>Backups</strong> — altijd een vangnet</li>
-      <li><strong>Checks vooraf</strong> — wat gebeurt er als dit draait?</li>
-      <li><strong>Guardrails</strong> — begrenzing inbouwen vóór automatisering</li>
-      <li><strong>Impact van automatisering</strong> — niet alleen de happy path testen</li>
-    </ul>
-    <div class="callout" style="margin-top:var(--spacing-lg);">
-      <p style="font-weight:500;">Automatisering moet werk <strong>makkelijker</strong> maken, niet risico's onzichtbaar maken.</p>
+    <p class="text-bold" style="margin-bottom:var(--spacing-lg);">Automatiseren is niet automatisch veilig. Door de OpenTofu-sync verdween er content.</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--spacing-xl);">
+      <div class="callout" style="margin-top:0;">
+        <h4 style="margin-bottom:var(--spacing-sm);">Onze guardrails:</h4>
+        <ul class="bullet-list" style="margin-top:0;">
+          <li><strong>Backups</strong>, altijd een vangnet</li>
+          <li><strong>Checks vooraf</strong>, wat gebeurt er als dit draait?</li>
+          <li><strong>Impact analyse</strong>, niet alleen de happy path testen</li>
+        </ul>
+      </div>
+      <div class="callout" style="margin-top:0; background:var(--color-blue-100); border-left-color:var(--color-blue-400);">
+        <p style="font-weight:500; font-size:var(--text-h4);">Automatisering moet werk <strong>makkelijker</strong> maken, niet risico's onzichtbaar maken.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -905,73 +925,83 @@ p, .body {
 <!-- ============================================
      SLIDE 11: QA FLOW (Light)
      ============================================ -->
-<section class="slide slide--light" id="slide-11">
+<section class="slide slide--light" id="slide-12">
   <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">11 / 14</div>
+  <div class="slide__page">12 / 15</div>
   <div class="slide-inner" style="text-align:center;">
     <h2>QA-strategie: flow van code tot productie</h2>
-    <div class="qa-eyes" style="margin-top:var(--spacing-md);">
-      <div class="qa-eyes__badge">👤👤👤 + 👤👤👤 + 🤖🤖 &nbsp;=&nbsp; 6 ogen + 2 AI-ogen</div>
-      <p class="text-small" style="color:var(--color-navy-300);">Onze kwaliteit komt niet uit één reviewmoment</p>
-    </div>
 
-    <div class="qa-flow">
+    <div class="qa-flow" style="margin-top:var(--spacing-md);">
       <div class="qa-step">
         <div class="qa-step__icon">👤</div>
         <div class="qa-step__role">Developer</div>
-        <div class="qa-step__desc">Schrijft code en gebruikt AI als&nbsp;sparringpartner</div>
+        <div class="qa-step__desc">Schrijft code</div>
       </div>
       <div class="qa-arrow">→</div>
       <div class="qa-step">
         <div class="qa-step__icon">🤖</div>
         <div class="qa-step__role">AI</div>
-        <div class="qa-step__desc">Helpt met review, checks en&nbsp;alternatieven</div>
+        <div class="qa-step__desc">Review, checks &amp;&nbsp;alternatieven</div>
+      </div>
+      <div class="qa-arrow">→</div>
+      <div class="qa-step">
+        <div class="qa-step__icon">🧪</div>
+        <div class="qa-step__role">Unit + Integratie</div>
+        <div class="qa-step__desc">Geautomatiseerde tests</div>
       </div>
       <div class="qa-arrow">→</div>
       <div class="qa-step">
         <div class="qa-step__icon">👤</div>
         <div class="qa-step__role">Collega</div>
-        <div class="qa-step__desc">Reviewt de code — menselijke blik&nbsp;blijft&nbsp;essentieel</div>
+        <div class="qa-step__desc">Code review</div>
+      </div>
+    </div>
+
+    <div class="qa-flow" style="margin-top:var(--spacing-sm);">
+      <div class="qa-step">
+        <div class="qa-step__icon">👤</div>
+        <div class="qa-step__role">Tester + Storybook</div>
+        <div class="qa-step__desc">Visuele &amp; functionele test</div>
       </div>
       <div class="qa-arrow">→</div>
       <div class="qa-step">
-        <div class="qa-step__icon">👤</div>
-        <div class="qa-step__role">Tester</div>
-        <div class="qa-step__desc">Test op de testomgeving — acceptatie&nbsp;vanuit&nbsp;gebruiker</div>
+        <div class="qa-step__icon">🚀</div>
+        <div class="qa-step__role">E2E</div>
+        <div class="qa-step__desc">End-to-end validatie</div>
+      </div>
+      <div class="qa-arrow">→</div>
+      <div class="qa-step">
+        <div class="qa-step__icon">📦</div>
+        <div class="qa-step__role">Deploy</div>
+        <div class="qa-step__desc">Acceptatie &amp; productie</div>
+      </div>
+      <div class="qa-arrow">→</div>
+      <div class="qa-step">
+        <div class="qa-step__icon">♿</div>
+        <div class="qa-step__role">Accessibility</div>
+        <div class="qa-step__desc">Toegankelijkheid check</div>
       </div>
     </div>
 
-    <p class="text-small" style="margin-top:var(--spacing-lg); color:var(--color-navy-300); font-weight:500;">AI versnelt, maar mensen blijven verantwoordelijk.</p>
-
-    <div style="margin-top:var(--spacing-lg);">
-      <p style="font-weight:600; margin-bottom:var(--spacing-sm);">Ondersteund door doorlopende kwaliteitslagen:</p>
-      <div class="qa-toolbar">
-        <span class="qa-toolbar__item">Unit tests</span>
-        <span class="qa-toolbar__item">Storybook</span>
-        <span class="qa-toolbar__item">Integratie testen</span>
-        <span class="qa-toolbar__item">End-to-end testen</span>
-        <span class="qa-toolbar__item">Accessibility checks</span>
-      </div>
-    </div>
+    <p class="text-small" style="margin-top:var(--spacing-md); color:var(--color-navy-300); font-weight:500;">AI versnelt, maar mensen blijven verantwoordelijk.</p>
   </div>
 </section>
 
 <!-- ============================================
      SLIDE 12: CULTUUR (Blue)
      ============================================ -->
-<section class="slide slide--blue" id="slide-12">
+<section class="slide slide--blue" id="slide-13">
   <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">12 / 14</div>
+  <div class="slide__page">13 / 15</div>
   <div class="slide-inner">
     <h2>Cultuur: de menselijke kant</h2>
     <p style="opacity:0.85; font-weight:500; font-size:var(--text-h4); margin-bottom:var(--spacing-lg);">Automatisering werkt alleen met vertrouwen.</p>
     <p style="opacity:0.9;">Werk leuker maken is niet alleen techniek. Het vraagt:</p>
     <ul class="bullet-list" style="margin-top:var(--spacing-md);">
-      <li><strong>Ruimte</strong> om te verbeteren — zonder dat alles direct af moet</li>
-      <li><strong>Vertrouwen</strong> in het team — geef professionals de vrijheid</li>
-      <li><strong>Steun</strong> vanuit de klant — zij profiteren van een gezond team</li>
-      <li><strong>Medestanders</strong> die mee willen denken — verbeteren doe je samen</li>
-      <li><strong>Cultuur</strong> waarin fouten leiden tot verbetering — niet tot afrekening</li>
+      <li><strong>Vertrouwen</strong> in het team, geef professionals de ruimte</li>
+      <li><strong>Steun</strong> vanuit PWN</li>
+      <li><strong>Medestanders</strong> die mee willen denken, verbeteren doe je samen</li>
+      <li><strong>Cultuur</strong> waarin fouten leiden tot verbetering, niet tot afrekening</li>
     </ul>
   </div>
 </section>
@@ -979,9 +1009,9 @@ p, .body {
 <!-- ============================================
      SLIDE 13: 4 LEERLESSEN (Light)
      ============================================ -->
-<section class="slide slide--light" id="slide-13">
+<section class="slide slide--light" id="slide-14">
   <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">13 / 14</div>
+  <div class="slide__page">14 / 15</div>
   <div class="slide-inner">
     <h2>4 Leerlessen</h2>
     <p style="font-weight:600; font-style:italic; margin-bottom:var(--spacing-lg);">"Wat kun jij morgen meenemen?"</p>
@@ -989,7 +1019,7 @@ p, .body {
       <div class="lesson-card">
         <div class="lesson-card__number">1</div>
         <h4>Automatiseer quality assurance</h4>
-        <p>Mensen maken fouten — ga daar vanuit. Automatiseer QA zo veel mogelijk. Vooral met AI. Catch issues voordat ze productie halen.</p>
+        <p>Mensen maken fouten, ga daar vanuit. Automatiseer QA zo veel mogelijk. Vooral met AI. Catch issues voordat ze productie halen.</p>
       </div>
       <div class="lesson-card">
         <div class="lesson-card__number">2</div>
@@ -999,7 +1029,7 @@ p, .body {
       <div class="lesson-card">
         <div class="lesson-card__number">3</div>
         <h4>Meer ogen = meer kwaliteit</h4>
-        <p>Meerdere reviewers verhogen kwaliteit én verdelen kennis. Niemand mag een bottleneck zijn. Zorg dat meerdere mensen elk onderdeel kennen.</p>
+        <p>Meerdere reviewers verhogen kwaliteit én verdelen kennis. Zorg dat meerdere mensen elk onderdeel kennen.</p>
       </div>
       <div class="lesson-card">
         <div class="lesson-card__number">4</div>
@@ -1013,19 +1043,14 @@ p, .body {
 <!-- ============================================
      SLIDE 14: AFSLUITING (Dark)
      ============================================ -->
-<section class="slide slide--dark" id="slide-14">
+<section class="slide slide--dark" id="slide-15">
   <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">14 / 14</div>
+  <div class="slide__page">15 / 15</div>
   <div class="slide-inner" style="text-align:center;">
     <h2>Afsluiting &amp; discussie</h2>
-    <p style="opacity:0.7; margin-bottom:var(--spacing-lg);">Vragen, reacties, ervaringen?</p>
+    <p class="text-bold" style="opacity:0.8; margin-bottom:var(--spacing-xl);">Vragen, reacties, ervaringen?</p>
     <div class="closing__prompt">
       <p>"Welke van deze vier lessen raakt het meest aan iets wat jij herkent in jouw team?"</p>
-    </div>
-    <div class="closing__info">
-      <p style="font-weight:600; margin-bottom:4px;">NAVARA</p>
-      <p class="text-small">Ondersteuning bij Developer Experience en Copilot training</p>
-      <p class="text-small" style="opacity:0.6; margin-top:var(--spacing-md);">navara.nl &nbsp;·&nbsp; Engineering business performance</p>
     </div>
   </div>
 </section>
@@ -1036,7 +1061,7 @@ p, .body {
 <script>
 (function() {
   const slides = document.querySelectorAll('.slide');
-  const totalSlides = slides.length;
+  const totalSlides = 15;
   const navDots = document.getElementById('navDots');
 
   // Build navigation dots
