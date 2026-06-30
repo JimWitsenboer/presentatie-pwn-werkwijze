@@ -104,6 +104,48 @@ body { overflow-x: hidden; }
 .slide--light-blue { background: var(--color-blue-50); color: var(--color-black); }
 
 /* ============================================
+   WATER-THEMED VISUAL DECORATIONS
+   ============================================ */
+.water-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.12;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%233665ff' d='M0,50 C200,20 400,80 600,50 C800,20 1000,80 1200,50 C1300,35 1400,65 1440,50 L1440,100 L0,100 Z'/%3E%3C/svg%3E") repeat-x bottom,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%2386a3ff' d='M0,70 C300,40 600,90 900,65 C1100,50 1300,80 1440,60 L1440,100 L0,100 Z'/%3E%3C/svg%3E") repeat-x bottom;
+}
+.slide--dark .water-wave,
+.slide--blue .water-wave { opacity: 0.18; }
+
+.water-droplet-left {
+  position: absolute;
+  top: 50%;
+  left: 3vw;
+  transform: translateY(-50%);
+  font-size: clamp(4rem, 8vw, 10rem);
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 1;
+  user-select: none;
+}
+.water-droplet-right {
+  position: absolute;
+  top: 50%;
+  right: 3vw;
+  transform: translateY(-50%);
+  font-size: clamp(4rem, 8vw, 10rem);
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 1;
+  user-select: none;
+}
+
+/* ============================================
    NAVARA LOGO (top-left)
    ============================================ */
 .slide__logo {
@@ -684,6 +726,8 @@ p, .body {
 <section class="slide slide--dark" id="slide-1">
   <div class="slide__logo">NAVARA</div>
   <div class="slide__page">1 / 15</div>
+  <div class="water-wave"></div>
+  <div class="water-droplet-left">💧</div>
   <div class="slide-inner" style="text-align:center;">
     <h1 class="cover__title">Werkwijze</h1>
     <div class="cover__accent"></div>
@@ -697,6 +741,8 @@ p, .body {
 <section class="slide slide--light" id="slide-2">
   <div class="slide__logo">NAVARA</div>
   <div class="slide__page">2 / 15</div>
+  <div class="water-wave"></div>
+  <div class="water-droplet-right">💧</div>
   <div class="slide-inner">
     <h2>Wie zijn wij?</h2>
     <p>NAVARA, team online. Nieuw design van de website voor PWN.</p>
@@ -743,6 +789,8 @@ p, .body {
 <section class="slide slide--blue" id="slide-3">
   <div class="slide__logo">NAVARA</div>
   <div class="slide__page">3 / 15</div>
+  <div class="water-wave"></div>
+  <div class="water-droplet-left">💧</div>
   <div class="slide-inner quote-slide">
     <div class="quote-slide__mark">"</div>
     <p class="quote-slide__text">Werken moet leuk zijn.</p>
@@ -756,6 +804,8 @@ p, .body {
 <section class="slide slide--light" id="slide-4">
   <div class="slide__logo">NAVARA</div>
   <div class="slide__page">4 / 15</div>
+  <div class="water-wave"></div>
+  <div class="water-droplet-right">💧</div>
   <div class="slide-inner">
     <h2>Waarom?</h2>
     <p class="text-bold">Developers voegen de meeste waarde toe met:</p>
@@ -787,6 +837,8 @@ p, .body {
 <section class="slide slide--light" id="slide-5">
   <div class="slide__logo">NAVARA</div>
   <div class="slide__page">5 / 15</div>
+  <div class="water-wave"></div>
+  <div class="water-droplet-right">💧</div>
   <div class="slide-inner">
     <div style="display:grid; grid-template-columns:1.2fr 1.8fr; gap:0; align-items:stretch;">
       <div style="background:var(--color-navy); border-radius:var(--radius-lg) 0 0 var(--radius-lg); padding:var(--spacing-xl); display:flex; flex-direction:column; justify-content:center; position:relative; overflow:hidden;">
@@ -807,6 +859,8 @@ p, .body {
 <section class="slide slide--light" id="slide-6">
   <div class="slide__logo">NAVARA</div>
   <div class="slide__page">6 / 15</div>
+  <div class="water-wave"></div>
+  <div class="water-droplet-left">💧</div>
   <div class="slide-inner">
     <h2 style="margin-bottom:var(--spacing-md);">Hoe meten we DevEx?</h2>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--spacing-xl); align-items:center; flex:1;">
@@ -829,6 +883,8 @@ p, .body {
 <section class="slide slide--light" id="slide-7">
   <div class="slide__logo">NAVARA</div>
   <div class="slide__page">7 / 15</div>
+  <div class="water-wave"></div>
+  <div class="water-droplet-right">💧</div>
   <div class="slide-inner" style="text-align:center;">
     <h2>Developer Experience in beeld</h2>
     <div style="margin-top:var(--spacing-lg);">
@@ -843,6 +899,8 @@ p, .body {
 <section class="slide slide--dark" id="slide-8">
   <div class="slide__logo">NAVARA</div>
   <div class="slide__page">8 / 15</div>
+  <div class="water-wave"></div>
+  <div class="water-droplet-left">💧</div>
   <div class="slide-inner">
     <h2>Belangrijkste pijnpunten uit DX</h2>
     <p style="opacity:0.7; margin-bottom:var(--spacing-lg);">We hebben geleerd van:</p>
@@ -863,6 +921,8 @@ p, .body {
 <section class="slide slide--light-blue" id="slide-9">
   <div class="slide__logo">NAVARA</div>
   <div class="slide__page">9 / 15</div>
+  <div class="water-wave"></div>
+  <div class="water-droplet-right">💧</div>
   <div class="slide-inner">
     <h2>🔍 Inzoomen: betrouwbare pipelines</h2>
     <p class="text-bold" style="margin-top:var(--spacing-md);">Betrouwbare pipelines bepalen werkplezier.</p>
@@ -884,6 +944,8 @@ p, .body {
 <section class="slide slide--light" id="slide-10">
   <div class="slide__logo">NAVARA</div>
   <div class="slide__page">10 / 15</div>
+  <div class="water-wave"></div>
+  <div class="water-droplet-left">💧</div>
   <div class="slide-inner">
     <h2>🔍 Inzoomen: handwerk schaalt slecht</h2>
     <p>Contentful handmatig beheren was foutgevoelig. Contenttypes handmatig aanmaken en bijhouden kost tijd en vergroot de kans op fouten.</p>
@@ -909,6 +971,8 @@ p, .body {
 <section class="slide slide--light" id="slide-11">
   <div class="slide__logo">NAVARA</div>
   <div class="slide__page">11 / 15</div>
+  <div class="water-wave"></div>
+  <div class="water-droplet-right">💧</div>
   <div class="slide-inner">
     <h2>🔍 Inzoomen: automatisering heeft guardrails nodig</h2>
     <p class="text-bold" style="margin-bottom:var(--spacing-lg);">Automatiseren is niet automatisch veilig. Door de OpenTofu-sync verdween er content.</p>
@@ -934,6 +998,8 @@ p, .body {
 <section class="slide slide--light" id="slide-12">
   <div class="slide__logo">NAVARA</div>
   <div class="slide__page">12 / 15</div>
+  <div class="water-wave"></div>
+  <div class="water-droplet-left">💧</div>
   <div class="slide-inner" style="text-align:center;">
     <h2>QA-strategie: flow van code tot productie</h2>
 
@@ -999,6 +1065,8 @@ p, .body {
 <section class="slide slide--blue" id="slide-13">
   <div class="slide__logo">NAVARA</div>
   <div class="slide__page">13 / 15</div>
+  <div class="water-wave"></div>
+  <div class="water-droplet-left">💧</div>
   <div class="slide-inner">
     <h2>Cultuur: de menselijke kant</h2>
     <p style="opacity:0.85; font-weight:500; font-size:var(--text-h4); margin-bottom:var(--spacing-lg);">Automatisering werkt alleen met vertrouwen.</p>
@@ -1018,6 +1086,8 @@ p, .body {
 <section class="slide slide--light" id="slide-14">
   <div class="slide__logo">NAVARA</div>
   <div class="slide__page">14 / 15</div>
+  <div class="water-wave"></div>
+  <div class="water-droplet-right">💧</div>
   <div class="slide-inner">
     <h2>4 Leerlessen</h2>
     <p style="font-weight:600; font-style:italic; margin-bottom:var(--spacing-lg);">"Wat kun jij morgen meenemen?"</p>
@@ -1052,6 +1122,8 @@ p, .body {
 <section class="slide slide--dark" id="slide-15">
   <div class="slide__logo">NAVARA</div>
   <div class="slide__page">15 / 15</div>
+  <div class="water-wave"></div>
+  <div class="water-droplet-left">💧</div>
   <div class="slide-inner" style="text-align:center;">
     <h2>Afsluiting &amp; discussie</h2>
     <p class="text-bold" style="opacity:0.8; margin-bottom:var(--spacing-xl);">Vragen, reacties, ervaringen?</p>
