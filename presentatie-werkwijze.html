@@ -221,14 +221,25 @@ body { overflow-x: hidden; }
   position: absolute;
   top: var(--spacing-lg);
   left: var(--spacing-lg);
-  font-weight: 900;
-  font-size: 1.4rem;
-  letter-spacing: -0.02em;
-  opacity: 0.85;
+  height: 38px;
+  width: auto;
+  opacity: 0.9;
   z-index: 2;
 }
 .slide--dark .slide__logo,
-.slide--blue .slide__logo { opacity: 0.9; }
+.slide--blue .slide__logo { opacity: 1; }
+
+.slide__partner {
+  position: absolute;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+  height: 42px;
+  width: auto;
+  opacity: 0.7;
+  z-index: 2;
+}
+.slide--dark .slide__partner,
+.slide--blue .slide__partner { opacity: 0.8; }
 
 /* ============================================
    PAGE NUMBER (bottom-right)
@@ -793,8 +804,9 @@ p, .body {
      SLIDE 1: TITEL (Dark)
      ============================================ -->
 <section class="slide slide--dark" id="slide-1">
-  <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">1 / 15</div>
+  <img class="slide__logo" src="images/navara.svg" alt="NAVARA">
+  <div class="slide__page">1 / 16</div>
+  <img class="slide__partner" src="images/pwn.svg" alt="PWN">
   <div class="water-wave"></div>
   <div class="water-droplet-left">💧</div>
   <div class="jumping-fish">🐟</div>
@@ -810,8 +822,9 @@ p, .body {
      SLIDE 2: INTRODUCTIE (Light)
      ============================================ -->
 <section class="slide slide--light" id="slide-2">
-  <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">2 / 15</div>
+  <img class="slide__logo" src="images/navara-dark.svg" alt="NAVARA">
+  <img class="slide__partner" src="images/pwn.svg" alt="PWN">
+  <div class="slide__page">2 / 16</div>
   <div class="water-wave"></div>
   <div class="water-droplet-right">💧</div>
   <div class="slide-inner">
@@ -858,8 +871,9 @@ p, .body {
      SLIDE 3: QUOTE (Blue)
      ============================================ -->
 <section class="slide slide--blue" id="slide-3">
-  <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">3 / 15</div>
+  <img class="slide__logo" src="images/navara.svg" alt="NAVARA">
+  <div class="slide__page">3 / 16</div>
+  <img class="slide__partner" src="images/pwn.svg" alt="PWN">
   <div class="water-wave"></div>
   <div class="water-droplet-left">💧</div>
   <div class="slide-inner quote-slide">
@@ -873,8 +887,9 @@ p, .body {
      SLIDE 4: WAAROM? (Light)
      ============================================ -->
 <section class="slide slide--light" id="slide-4">
-  <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">4 / 15</div>
+  <img class="slide__logo" src="images/navara-dark.svg" alt="NAVARA">
+  <div class="slide__page">4 / 16</div>
+  <img class="slide__partner" src="images/pwn.svg" alt="PWN">
   <div class="water-wave"></div>
   <div class="water-droplet-right">💧</div>
   <div class="slide-inner">
@@ -906,8 +921,9 @@ p, .body {
      SLIDE 5: WAT IS DEVEX? (Light)
      ============================================ -->
 <section class="slide slide--light" id="slide-5">
-  <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">5 / 15</div>
+  <img class="slide__logo" src="images/navara-dark.svg" alt="NAVARA">
+  <div class="slide__page">5 / 16</div>
+  <img class="slide__partner" src="images/pwn.svg" alt="PWN">
   <div class="water-wave"></div>
   <div class="water-droplet-right">💧</div>
   <div class="slide-inner">
@@ -928,8 +944,9 @@ p, .body {
      SLIDE 6: DX DRIVERS (Light)
      ============================================ -->
 <section class="slide slide--light" id="slide-6">
-  <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">6 / 15</div>
+  <img class="slide__logo" src="images/navara-dark.svg" alt="NAVARA">
+  <div class="slide__page">6 / 16</div>
+  <img class="slide__partner" src="images/pwn.svg" alt="PWN">
   <div class="water-wave"></div>
   <div class="water-droplet-left">💧</div>
   <div class="slide-inner">
@@ -952,8 +969,9 @@ p, .body {
      SLIDE 7: DX SNAPSHOT
      ============================================ -->
 <section class="slide slide--light" id="slide-7">
-  <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">7 / 15</div>
+  <img class="slide__logo" src="images/navara-dark.svg" alt="NAVARA">
+  <div class="slide__page">7 / 16</div>
+  <img class="slide__partner" src="images/pwn.svg" alt="PWN">
   <div class="water-wave"></div>
   <div class="water-droplet-right">💧</div>
   <div class="slide-inner" style="text-align:center;">
@@ -968,8 +986,9 @@ p, .body {
      SLIDE 8: PIJNPUNTEN
      ============================================ -->
 <section class="slide slide--dark" id="slide-8">
-  <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">8 / 15</div>
+  <img class="slide__logo" src="images/navara.svg" alt="NAVARA">
+  <div class="slide__page">8 / 16</div>
+  <img class="slide__partner" src="images/pwn.svg" alt="PWN">
   <div class="water-wave"></div>
   <div class="water-droplet-left">💧</div>
   <div class="slide-inner">
@@ -990,8 +1009,9 @@ p, .body {
      SLIDE 8: PIPELINES (Light Blue)
      ============================================ -->
 <section class="slide slide--light-blue" id="slide-9">
-  <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">9 / 15</div>
+  <img class="slide__logo" src="images/navara-dark.svg" alt="NAVARA">
+  <div class="slide__page">9 / 16</div>
+  <img class="slide__partner" src="images/pwn.svg" alt="PWN">
   <div class="water-wave"></div>
   <div class="water-droplet-right">💧</div>
   <div class="slide-inner">
@@ -1013,8 +1033,9 @@ p, .body {
      SLIDE 9: HANDWERK (Light)
      ============================================ -->
 <section class="slide slide--light" id="slide-10">
-  <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">10 / 15</div>
+  <img class="slide__logo" src="images/navara-dark.svg" alt="NAVARA">
+  <div class="slide__page">10 / 16</div>
+  <img class="slide__partner" src="images/pwn.svg" alt="PWN">
   <div class="water-wave"></div>
   <div class="water-droplet-left">💧</div>
   <div class="slide-inner">
@@ -1040,8 +1061,9 @@ p, .body {
      SLIDE 10: AUTOMATISERING (Light)
      ============================================ -->
 <section class="slide slide--light" id="slide-11">
-  <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">11 / 15</div>
+  <img class="slide__logo" src="images/navara-dark.svg" alt="NAVARA">
+  <div class="slide__page">11 / 16</div>
+  <img class="slide__partner" src="images/pwn.svg" alt="PWN">
   <div class="water-wave"></div>
   <div class="water-droplet-right">💧</div>
   <div class="slide-inner">
@@ -1067,8 +1089,9 @@ p, .body {
      SLIDE 11: QA FLOW (Light)
      ============================================ -->
 <section class="slide slide--light" id="slide-12">
-  <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">12 / 15</div>
+  <img class="slide__logo" src="images/navara-dark.svg" alt="NAVARA">
+  <div class="slide__page">12 / 16</div>
+  <img class="slide__partner" src="images/pwn.svg" alt="PWN">
   <div class="water-wave"></div>
   <div class="water-droplet-left">💧</div>
   <div class="slide-inner" style="text-align:center;">
@@ -1134,8 +1157,9 @@ p, .body {
      SLIDE 12: CULTUUR (Blue)
      ============================================ -->
 <section class="slide slide--blue" id="slide-13">
-  <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">13 / 15</div>
+  <img class="slide__logo" src="images/navara.svg" alt="NAVARA">
+  <div class="slide__page">13 / 16</div>
+  <img class="slide__partner" src="images/pwn.svg" alt="PWN">
   <div class="water-wave"></div>
   <div class="water-droplet-left">💧</div>
   <div class="slide-inner">
@@ -1155,8 +1179,9 @@ p, .body {
      SLIDE 13: 4 LEERLESSEN (Light)
      ============================================ -->
 <section class="slide slide--light" id="slide-14">
-  <div class="slide__logo">NAVARA</div>
-  <div class="slide__page">14 / 15</div>
+  <img class="slide__logo" src="images/navara-dark.svg" alt="NAVARA">
+  <div class="slide__page">14 / 16</div>
+  <img class="slide__partner" src="images/pwn.svg" alt="PWN">
   <div class="water-wave"></div>
   <div class="water-droplet-right">💧</div>
   <div class="slide-inner">
@@ -1191,8 +1216,9 @@ p, .body {
      SLIDE 14: AFSLUITING (Dark)
      ============================================ -->
 <section class="slide slide--dark" id="slide-15">
-  <div class="slide__logo">NAVARA</div>
+  <img class="slide__logo" src="images/navara.svg" alt="NAVARA">
   <div class="slide__page">15 / 16</div>
+  <img class="slide__partner" src="images/pwn.svg" alt="PWN">
   <div class="water-wave"></div>
   <div class="water-droplet-left">💧</div>
   <video class="slide-video" autoplay loop muted playsinline>
@@ -1214,8 +1240,9 @@ p, .body {
   <video class="slide-video-full" autoplay loop muted playsinline>
     <source src="images/tot-ziens.mp4" type="video/mp4">
   </video>
-  <div class="slide__logo">NAVARA</div>
+  <img class="slide__logo" src="images/navara.svg" alt="NAVARA">
   <div class="slide__page">16 / 16</div>
+  <img class="slide__partner" src="images/pwn.svg" alt="PWN">
 </section>
 
 <!-- ============================================
